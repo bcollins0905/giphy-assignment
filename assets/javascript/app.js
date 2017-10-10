@@ -1,6 +1,14 @@
+// You should try to get in the habit of wrapping your JS code inside document.ready blocks
+// or an IIFE (Immediately Invoked Function Expression) so as to prevent your variables from
+// implicitly being placed on the global scope - this is mainly an issue because it becomes
+// much more likely that you'll have variable collisions.
+
 var topics = ["zombie", "ghoul", "frankenstein", "werewolf"];
 for(var i = 0; i<topics.length; i++){
 
+// It's a good practice to indent code within code blocks 2 or 4 spaces more than
+// whatever code opened said code block. This is entirely for readability/maintainability
+// so that you can easily understand which function/loop/condition the nested code belongs to.
 var topicBtn = $("<button>")
 topicBtn.addClass("topic-button");
 topicBtn.attr("monster", topics[i]);
@@ -40,6 +48,8 @@ var topic = $(this).attr("monster");
 var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic
 + "&api_key=6e6f8fea2d084271b6cc7d9eafaec8b4&limit=10"  
 
+    // Would be good to empty out the display div before adding more gifs
+    // that way you'll only ever have 10 at a time as opposed to a never ending list.
 
     $.ajax({
               url: queryURL,
